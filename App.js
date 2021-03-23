@@ -7,6 +7,7 @@ import { SafeAreaView, SafeAreaProvider, SafeAreaInsetsContext, useSafeAreaInset
 import * as Speech from 'expo-speech';
 
 export default class App extends React.Component {
+
   constructor()
   {
     super();
@@ -14,10 +15,12 @@ export default class App extends React.Component {
       text:""
     }
   }
+
 speak=(speech)=>{
 var thingstospeak=speech;
 Speech.speak(thingstospeak);
 }
+
   render(){
     return (
       <SafeAreaProvider>
@@ -40,7 +43,8 @@ centerComponent={{ text: 'Text-To-Speech', style: { color: '#fff' } }}
 
 <TouchableOpacity style={styles.button} 
 onPress={()=>{
-  this.speak(this.state.text);
+  var lower=this.state.text.toLowerCase().trim();
+  this.speak(lower);
   }} >
 <Text>Speak</Text>
 </TouchableOpacity>
